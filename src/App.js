@@ -18,7 +18,7 @@ const App = () => {
   // This state is the source of truth for the data inside the app. You won't be needing dummyData anymore.
   // To make the search bar work (which is stretch) we'd need another state to hold the search term.
   const [posts, setPosts] = useState(dummyData)
-  const [searchTerm, setSearchTerm] = useState(SearchBar)
+  const [searchTerm, setSearchTerm] = useState("")
 
   const likePost = postId => {
     /*
@@ -40,11 +40,37 @@ const App = () => {
     }))
   };
 
+  //Making a function to filter the search bar for the typed text inputted into it:
+  // With the code below, I get the error: Too many re-renders. React limits the number of renders to preven an infinite loop
+
+  // const filterSearch = post => {
+  //   setPosts(posts.filter((text) => {
+  //     if (text.username.toLowerCase().includes(searchTerm.toLowerCase())) {
+  //       return post
+  //     }
+  //     else if (text.comments.username.toLowerCase().includes(searchTerm.toLowerCase())) {
+  //       return post
+  //     }
+  //     return post
+  //   }))
+
+  //   setPosts(posts.map((post, index) => {
+  //     <div key={index}>
+  //       <p>{post.username}</p>
+  //     </div>
+  //   })
+  //   )
+  // }
+
   return (
     <div className='App'>
       {/* Add SearchBar and Posts here to render them */}
       {/* Check the implementation of each component, to see what props they require, if any! */}
       <SearchBar />
+      {/* 
+      The code below is to implement the search bar to work:
+
+      <SearchBar typedText={filterSearch} textChange={setSearchTerm()} /> */}
       <Posts likePost={likePost} posts={posts} />
     </div>
   );
