@@ -7,7 +7,7 @@ import "./SearchBar.css";
 
 const SearchBar = (props) => {
   //Below should be used for getting the search bar to work - for the onChange in the input
-  // const { textChange } = props
+  const { textChange } = props
 
   return (
     <div className="search-bar-wrapper">
@@ -18,10 +18,10 @@ const SearchBar = (props) => {
         <input
           type="text"
           placeholder="Search Username"
-        //Have not gotten this to work with the setStatus in App.js
-        // onChange={text => {
-        //   textChange(text.target.value)
-        // }}
+          //Have not gotten this to work with the setStatus in App.js
+          onChange={text => {
+            textChange(text.target.value)
+          }}
         />
       </form>
       <div className="social-wrapper">

@@ -43,36 +43,37 @@ const App = () => {
   //Making a function to filter the search bar for the typed text inputted into it:
   // With the code below, I get the error: Too many re-renders. React limits the number of renders to preven an infinite loop
 
-  // const filterSearch = post => {
-  //   setPosts(posts.filter((text) => {
-  //     if (text.username.toLowerCase().includes(searchTerm.toLowerCase())) {
-  //       return post
-  //     }
-  //     else if (text.comments.username.toLowerCase().includes(searchTerm.toLowerCase())) {
-  //       return post
-  //     }
-  //     return post
-  //   }))
+  const filterSearch = posts => {
+    // setPosts(posts.filter((text) => {
+    //   if (text.username.toLowerCase().includes(searchTerm.toLowerCase())) {
+    //     return post
+    //   }
+    //   else if (text.comments.username.toLowerCase().includes(searchTerm.toLowerCase())) {
+    //     return post
+    //   }
+    //   return post
+    // }))
 
-  //   setPosts(posts.map((post, index) => {
-  //     <div key={index}>
-  //       <p>{post.username}</p>
-  //     </div>
-  //   })
-  //   )
-  // }
+    return posts.filter(post => {
+      if (!searchTerm || post.username.includes(searchTerm.toLowerCase())) {
+        return post
+      }
+      return false
+    })
+  }
 
   return (
     <div className='App'>
       {/* Add SearchBar and Posts here to render them */}
       {/* Check the implementation of each component, to see what props they require, if any! */}
-      <SearchBar />
+      {/* <SearchBar /> */}
       {/* 
-      The code below is to implement the search bar to work:
+      The code below is to implement the search bar to work: */}
 
-      <SearchBar typedText={filterSearch} textChange={setSearchTerm()} /> */}
-      <Posts likePost={likePost} posts={posts} />
+      <SearchBar textChange={setSearchTerm} />
+      <Posts likePost={likePost} posts={filterSearch(posts)} />
     </div>
   );
 };
+
 export default App;
