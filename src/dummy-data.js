@@ -23,6 +23,7 @@ const dummyData = [
                 text: "Can't wait to try it!",
             },
         ],
+        isClicked: false,
     },
     {
         id: 2,
@@ -53,6 +54,7 @@ const dummyData = [
                 text: "It that injustice",
             },
         ],
+        isClicked: false,
     },
 ];
 

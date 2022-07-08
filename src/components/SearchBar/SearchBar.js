@@ -6,6 +6,9 @@ import { faHeart, faCircle, faCompass } from '@fortawesome/free-regular-svg-icon
 import "./SearchBar.css";
 
 const SearchBar = (props) => {
+  //Below should be used for getting the search bar to work - for the onChange in the input
+  const { textChange } = props
+
   return (
     <div className="search-bar-wrapper">
       <div className="social">
@@ -14,7 +17,11 @@ const SearchBar = (props) => {
       <form className="search-form">
         <input
           type="text"
-          placeholder="Search"
+          placeholder="Search Username"
+          //Have not gotten this to work with the setStatus in App.js
+          onChange={text => {
+            textChange(text.target.value)
+          }}
         />
       </form>
       <div className="social-wrapper">
